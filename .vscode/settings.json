@@ -1,0 +1,12 @@
+{
+    "cSpell.words": [
+        "Cookiecutter",
+        "hadolint",
+        "isort",
+        "kustomize",
+        "mypy",
+        "pyproject",
+        "pytest",
+        "typer"
+    ]
+}

@@ -1,0 +1,53 @@
+{
+    "project_name": "Cookiecutter Machine Learning",
+    "repo_name": "repo_name",
+    "project_slug": "{{cookiecutter.repo_name.lower().replace(' ', '_').replace('-', '_')}}",
+    "organization": "Organization",
+    "organization_email": "Support email address",
+    "author_name": "Project manager name",
+    "author_email": "Project manager email",
+    "description": "A short description of the project. No quotes.",
+    "license": [
+        "Proprietary",
+        "MIT",
+        "BSD-3-Clause",
+        "BSD license",
+        "ISC license",
+        "Apache Software License 2.0",
+        "GNU General Public License v3",
+        "Mozilla Public License 2.0"
+    ],
+    "tensor_backend": [
+        "pytorch",
+        "tensorflow",
+        "jax"
+    ],
+    "enable_cuda": [
+        "False",
+        "True"
+    ],
+    "use_notebooks": [
+        "False",
+        "True"
+    ],
+    "experiment_tracking": [
+        "none",
+        "mlflow"
+    ],
+    "python_major_version": 3,
+    "python_minor_version": 11,
+    "minimal_python_version": "{{cookiecutter.python_major_version}}.{{cookiecutter.python_minor_version}}",
+    "line_length": 120,
+    "version": [
+        "0.0.0"
+    ],
+    "command_line_interface": [
+        "none",
+        "typer"
+    ],
+    "k8s": [
+        "none",
+        "helm",
+        "kustomize"
+    ]
+}

@@ -1,0 +1,9 @@
+* text=auto eol=lf
+*.sh text eol=lf
+*.conf text eol=lf
+*.py        text diff=python
+*.{cmd,[cC][mM][dD]} text eol=crlf
+*.{bat,[bB][aA][tT]} text eol=crlf
+## vscode devcontainers
+**/.devcontainer/*.json linguist-language=JSON-with-Comments
+**/.vscode/*.json linguist-language=JSON-with-Comments

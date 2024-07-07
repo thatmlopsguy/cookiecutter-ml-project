@@ -1,0 +1,32 @@
+site_name: Cookiecutter Machine Learning
+site_description: A project template and directory structure for Machine Learning projects.
+
+repo_url: https://github.com/thatmlopsguy/cookiecutter-ml-project
+repo_name: cookiecutter-ml-project
+
+theme:
+  name: "material"
+  locale: en
+  font: false
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: black
+      accent: amber
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: amber
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+
+plugins:
+  - search
+
+copyright: |
+  Copyright &copy; 2024
+  Project maintained by <a target=_blanks href="https://github.com/thatmlopsguy">ThatMLOpsguy </a>.
