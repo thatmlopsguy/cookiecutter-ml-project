@@ -1,0 +1,83 @@
+#################################################################################
+# Make file tutorials: https://makefiletutorial.com/#getting-started            #
+# Thanks to grihabor for Makefile.version                                       #
+# https://gist.github.com/grihabor/4a750b9d82c9aa55d5276bd5503829be             #
+#################################################################################
+# Variables
+PACKAGE            := {{cookiecutter.repo_name}}
+SHELL              := /bin/bash
+ROOTDIR            := $(shell pwd)
+VERSIONFILE        := $(shell cat VERSION)
+MAKE               := make --no-print-directory
+MAKE_VERSION       := $(shell $(MAKE) --version)
+UNAME               = $(shell uname -m)
+DEBUG_FILE         := debug.txt
+MODULE_NAME        := {{ cookiecutter.project_slug }}
+PROJECT_DIR        := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
+PROJECT_NAME       := {{ cookiecutter.repo_name }}
+PYTHON_INTERPRETER := python3
+SYSTEM_ARCH        := $(shell $(PYTHON_INTERPRETER) -c "import platform; print(platform.platform())")
+SYSTEM_OS          := $(shell $(PYTHON_INTERPRETER) -c "import platform; print(platform.system())")
+
+ENV_NAME            = {{ cookiecutter.project_slug }}
+ENV_DIR             = $(ROOTDIR)/.venv
+ENV_BIN_DIR         = $(ENV_DIR)/bin
+ENV_LIB_DIR         = $(ENV_DIR)/lib
+ENV_PYTHON          = $(ENV_BIN_DIR)/python
+
+DATE                = $(shell date +'%d.%m.%Y')
+TIME                = $(shell date +'%H:%M:%S')
+GIT_VERSION        := $(shell git --version | cut -d' ' -f3)
+GIT_COMMIT         := $(shell git rev-parse HEAD)
+GIT_HASH            = $(shell git rev-parse --short HEAD)
+GIT_BRANCH_NAME    := $(shell git rev-parse --abbrev-ref HEAD)
+GIT_COMMIT_MESSAGE := $(shell git log --format=%B -n 1 $(GIT_COMMIT))
+GIT_AUTHOR         := $(firstword $(subst @, ,$(shell git show --format="%aE" $(GIT_COMMIT))))
+GIT_TAG_MESSAGE     = "$(TIME) $(DATE) $(GIT_AUTHOR) $(GIT_BRANCH_NAME)"
+
+DOCS_ROOT          := $(ROOTDIR)/docs
+
+DESCRIBE           := $(shell git describe --match "v*" --always --tags)
+DESCRIBE_PARTS     := $(subst -, ,$(DESCRIBE))
+
+VERSION_TAG        := $(word 1,$(DESCRIBE_PARTS))
+COMMITS_SINCE_TAG  := $(word 2,$(DESCRIBE_PARTS))
+
+VERSION            := $(subst v,,$(VERSION_TAG))
+VERSION_PARTS      := $(subst ., ,$(VERSION))
+
+MAJOR              := $(word 1,$(VERSION_PARTS))
+MINOR              := $(word 2,$(VERSION_PARTS))
+MICRO              := $(word 3,$(VERSION_PARTS))
+
+NEXT_MAJOR         := $(shell echo $$(($(MAJOR)+1)))
+NEXT_MINOR         := $(shell echo $$(($(MINOR)+1)))
+NEXT_MICRO          = $(shell echo $$(($(MICRO)+$(COMMITS_SINCE_TAG))))
+
+ifeq ($(strip $(COMMITS_SINCE_TAG)),)
+CURRENT_VERSION_MICRO := $(MAJOR).$(MINOR).$(MICRO)
+CURRENT_VERSION_MINOR := $(CURRENT_VERSION_MICRO)
+CURRENT_VERSION_MAJOR := $(CURRENT_VERSION_MICRO)
+else
+CURRENT_VERSION_MICRO := $(MAJOR).$(MINOR).$(NEXT_MICRO)
+CURRENT_VERSION_MINOR := $(MAJOR).$(NEXT_MINOR).0
+CURRENT_VERSION_MAJOR := $(NEXT_MAJOR).0.0
+endif
+
+CURRENT_TAG_MICRO  := "v$(CURRENT_VERSION_MICRO)"
+CURRENT_TAG_MINOR  := "v$(CURRENT_VERSION_MINOR)"
+CURRENT_TAG_MAJOR  := "v$(CURRENT_VERSION_MAJOR)"
+
+# Docker variables
+DOCKER_IMAGE   := "{{ cookiecutter.project_slug }}"
+DOCKER_VERSION := "{{ cookiecutter.version }}"
+DOCKER_REGISTRY:= ""
+
+{%- if cookiecutter.enable_cuda == 'True' %}
+export DOCKER=nvidia-docker
+{%- else %}
+export DOCKER=docker
+{%- endif %}
+
+export JUPYTER_CONTAINER_PORT=8888
+# EOF

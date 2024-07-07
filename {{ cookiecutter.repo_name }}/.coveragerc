@@ -1,0 +1,6 @@
+[run]
+omit =
+    docs/*
+    tests/*
+    setup.py
+    third_party/*

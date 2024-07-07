@@ -1,0 +1,82 @@
+[project]
+name = "{{ cookiecutter.project_name }}"
+version = "0.1.0"
+description = "{{ cookiecutter.description }}"
+readme = "README.md"
+requires-python = ">=3.8"
+include = [
+    "CODE_OF_CONDUCT.md",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    "README.md",
+ ]
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.12"
+click = "^7.1.2"
+rich = "^13.4.2"
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.3.1"
+codespell = "^2.2.4"
+
+[tool.poetry.group.test.dependencies]
+pytest-cov = "^4.0.0"
+pytest = "^7.2.2"
+
+[tool.poetry.group.docs.dependencies]
+
+[tool.ruff]
+line-length = 120
+ignore = [
+    # line-length is handled by black
+    "E501",
+    # TODO: remove usage of `l`
+    "E741"
+]
+
+[tool.isort]
+profile = "black"
+line_length = 120
+src_paths = ["src", "tests"]
+
+[tool.mypy]
+ignore_missing_imports = true
+exclude = "third_party/|examples/|tests/"
+
+[tool.pytest.ini_options]
+minversion = 6.0
+log_cli_level = "INFO"
+addopts = "-v --cov=. --cov-report=term --cov-report=html"
+pythonpath = [
+  "."
+]
+
+[tool.pytest.coverage.run]
+omit = [
+  "tests/*"
+]
+
+[tool.coverage.report]
+fail_under = 80.0
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if __name__ == .__main__.:",
+    "nocov",
+    "if TYPE_CHECKING:",
+]
+
+[tool.coverage.run]
+branch = true
+omit = [
+    # add files to omit here
+]
+
+
+[tool.codespell]
+ignore-words-list = "ACI"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
