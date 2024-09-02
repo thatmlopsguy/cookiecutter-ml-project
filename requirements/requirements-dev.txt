@@ -1,4 +1,4 @@
 -r requirements.txt
 
-commitizen==3.9.0
+commitizen==3.29.0
 pre-commit==2.20.0
