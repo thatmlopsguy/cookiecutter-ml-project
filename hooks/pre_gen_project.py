@@ -58,6 +58,7 @@ def validate_project_name(project_name: str) -> None:
     if PROJECT_SLUG_REGEX.fullmatch(project_name) is None:
         link = "https://www.python.org/dev/peps/pep-0008/#package-and-module-names"
         logger.error("Module name should be pep-8 compliant.")
+        logger.error("Please do not use a - and use _ instead")
         logger.error(f"  More info: {link}")
         message = f"ERROR: The project name `{project_name}` is not a valid Python module name."
         raise ValueError(message)
@@ -85,7 +86,7 @@ def check_python_version():
     warning = f"\nWARNING: You are running cookiecutter using Python {python_major_version}.{python_minor_version}, but a version >= Python 3.7+ is required.\nEither install a more recent version of Python, or use the Docker instructions.\n"
 
     if (python_major_version == 2) or (
-        python_major_version == 3 and python_minor_version < 7
+        python_major_version == 3 and python_minor_version < 10
     ):
         logger.warning(warning)
         sys.exit(1)
@@ -120,7 +121,7 @@ def validate_line_length(line_length: int) -> None:
 def main() -> None:
     try:
         validate_project_name(project_name="{{cookiecutter.project_slug}}")
-        check_valid_email_address_format("{{ cookiecutter.author_email }}")
+        check_valid_email_address_format(email="{{ cookiecutter.author_email }}")
         check_python_version()
         validate_semver(version="{{ cookiecutter.version }}")
         validate_line_length(line_length=int("{{ cookiecutter.line_length }}"))

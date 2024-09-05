@@ -17,5 +17,11 @@ insert_final_newline = false
 trim_trailing_whitespace = false
 indent_size = 2
 
+[Makefile]
+indent_style = tab
+
 [{LICENSE, VERSION, requirements*, *.txt}]
 insert_final_newline = false
+
+[*.{diff,patch}]
+trim_trailing_whitespace = false

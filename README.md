@@ -1,4 +1,4 @@
-# Cookiecutter Machine Learning
+# 🍪 Cookiecutter Machine Learning
 
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-red.svg)](#python)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](https://commitizen-tools.github.io/commitizen/)
@@ -47,7 +47,7 @@ just focus on your core (Model Architecture, Training Flow, etc.).
   `ray` integration for elegantly configuring complex applications;
 - (Optional) [`typer`](https://typer.tiangolo.com) CLI template to get you
   started quickly;
-- Simple [`helm`](https://helm.sh/) chart or [`kustomize`](https://kustomize.io/) to deploy to k8s
+- Simple [`helm`](https://helm.sh/) chart or [`kustomize`](https://kustomize.io/) to deploy to k8s.
 
 ### Documentation
 
@@ -131,19 +131,19 @@ Template generator will ask you to fill some variables.
 
 The input variables, with their default values:
 
-|      **Parameter**       |      **Default value**      | **Description**                                                                                                                 |
-| :----------------------: | :-------------------------: | ------------------------------------------------------------------------------------------------------------------------------- |
-|      `project_name`      |       `project_name`        | Project Name                                                                                                                    |
-|       `repo_name`        |         `repo_name`         | Repository Name                                                                                                                 |
-|      `description`       | based on the `project_name` | Brief description of your project.                                                                                              |
-|      `organization`      | based on the `project_name` | Name of the organization. We need to generate LICENSE and to specify ownership in `pyproject.toml`.                             |
-|        `license`         |            `MIT`            | One of `MIT`, `BSD-3`, `GNU GPL v3.0` and `Apache Software License 2.0`.                                                        |
-| `minimal_python_version` |           `3.10`            | Minimal Python version. It is used for builds and formatters `ruff` and `isort`. |
-|   `organization_email`   | based on the `organization` | Email for `SECURITY.md` files and to specify the ownership of the project in `pyproject.toml`.                                  |
-|        `version`         |           `0.0.0`           | Initial version of the package. Make sure it follows the [`semantic versions`](https://semver.org) specification.                 |
-|      `line_length`       |            `120`            | The max length per line (used for codestyle with `ruff` and `isort`). NOTE: This value must be between 50 and 140.             |
-| `command_line_interface` |           `none`            | If `typer` is chosen generator will create simple CLI application with [`typer`](https://github.com/tiangolo/typer) library.    |
-|          `k8s`           |           `none`            | Choose if [helm](https://helm.sh/) charts or [kustomize](https://kustomize.io/) to deploy to kubernetes
+|      **Parameter**       |      **Default value**      | **Description**                                                                                                              |
+|:------------------------:|:---------------------------:|------------------------------------------------------------------------------------------------------------------------------|
+|      `project_name`      |       `project_name`        | Project Name                                                                                                                 |
+|       `repo_name`        |         `repo_name`         | Repository Name                                                                                                              |
+|      `description`       | based on the `project_name` | Brief description of your project.                                                                                           |
+|      `organization`      | based on the `project_name` | Name of the organization. We need to generate LICENSE and to specify ownership in `pyproject.toml`.                          |
+|        `license`         |            `MIT`            | One of `MIT`, `BSD-3`, `GNU GPL v3.0` and `Apache Software License 2.0`.                                                     |
+| `minimal_python_version` |           `3.10`            | Minimal Python version. It is used for builds and formatters `ruff` and `isort`.                                             |
+|   `organization_email`   | based on the `organization` | Email for `SECURITY.md` files and to specify the ownership of the project in `pyproject.toml`.                               |
+|        `version`         |           `0.0.0`           | Initial version of the package. Make sure it follows the [`semantic versions`](https://semver.org) specification.            |
+|      `line_length`       |            `120`            | The max length per line (used for codestyle with `ruff` and `isort`). NOTE: This value must be between 50 and 140.           |
+| `command_line_interface` |           `none`            | If `typer` is chosen generator will create simple CLI application with [`typer`](https://github.com/tiangolo/typer) library. |
+|          `k8s`           |           `none`            | Choose if [helm](https://helm.sh/) charts or [kustomize](https://kustomize.io/) to deploy to kubernetes                      |
 
 
 ## Contributing
@@ -161,10 +161,10 @@ packaging experience better.
 ```shell
 python3 -m venv .venv
 source .venv/bin/activate
-python3 -m pip install -r requirements/requirements-dev.txt
+python3 -m pip install -r requirements/dev.txt
 ```
 
-## Credits
+## 🏅 Credits
 
 See [credits](CREDITS.md) for all acknowledgements.
 

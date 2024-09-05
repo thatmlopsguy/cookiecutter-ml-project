@@ -3,7 +3,7 @@ name = "{{ cookiecutter.project_name }}"
 version = "0.1.0"
 description = "{{ cookiecutter.description }}"
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 include = [
     "CODE_OF_CONDUCT.md",
     "CONTRIBUTING.md",
@@ -12,7 +12,7 @@ include = [
  ]
 
 [tool.poetry.dependencies]
-python = ">=3.8,<3.12"
+python = ">=3.10,<3.12"
 click = "^7.1.2"
 rich = "^13.4.2"
 
@@ -27,6 +27,7 @@ pytest = "^7.2.2"
 [tool.poetry.group.docs.dependencies]
 
 [tool.ruff]
+exclude = [".env", ".venv", "venv", "notebooks"]
 line-length = 120
 ignore = [
     # line-length is handled by black
