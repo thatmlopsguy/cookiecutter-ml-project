@@ -1,3 +1,5 @@
+"""{{ cookiecutter.project_name }}."""
+
 import os.path as op
 from pathlib import Path
 

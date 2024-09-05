@@ -1,0 +1,5 @@
+-r base.txt
+
+isort
+mypy
+pytest==7.3.1

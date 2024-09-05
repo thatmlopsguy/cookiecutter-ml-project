@@ -1,16 +1,11 @@
 import logging
 from typing import List, Optional
 
-import click
+import typer
 
 _logger: logging.Logger = logging.getLogger(__name__)
 
-
-@click.group()
-def cli() -> None:
-    """CLI interface"""
-    pass
-
+app = typer.Typer()
 
 if __name__ == "__main__":
-    cli()
+    app()
